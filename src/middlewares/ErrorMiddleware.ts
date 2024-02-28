@@ -6,8 +6,9 @@ export default function errorMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const status = res.statusCode || 500;
-  res.status(status).json({message: err.message});
+  const errorMessage = err.message || "Server Error";
+  
+  res.status(500).json({error: "Server Error"});
 }
 
 
